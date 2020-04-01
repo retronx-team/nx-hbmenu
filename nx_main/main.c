@@ -214,7 +214,7 @@ bool menuUpdate(void) {
     
     handleTouch(menu);
 
-    if (down & KEY_Y)
+    /*if (down & KEY_Y)
     {
         launchMenuNetloaderTask();
     }
@@ -232,12 +232,12 @@ bool menuUpdate(void) {
     }
     else if(down & KEY_MINUS){
         themeMenuStartup();
-    }
-    else if (down & KEY_PLUS)
+    }*/
+    if (down & KEY_PLUS)
     {
         exitflag = 1;
     }
-    else if (menu->nEntries > 0)
+    /*else if (menu->nEntries > 0)
     {
         int move = 0;
 
@@ -250,7 +250,7 @@ bool menuUpdate(void) {
         if (newEntry < 0) newEntry = 0;
         if (newEntry >= menu->nEntries) newEntry = menu->nEntries-1;
         menu->curEntry = newEntry;
-    }
+    }*/
 
     return exitflag;
 }

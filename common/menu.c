@@ -224,6 +224,7 @@ static void drawIcon(int x, int y, int width, int height, const uint8_t *image, 
 }
 
 static void drawEntry(menuEntry_s* me, int off_x, int is_active) {
+    return;
     ThemeLayoutObject *layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_MenuList];
     int x, y;
     int start_y = layoutobj->posStart[1];//*(n % 2);
@@ -600,7 +601,7 @@ u32 drawStatus() {
 }
 
 void drawButtons(menu_s* menu, bool emptyDir, int *out_basePos) {
-    ThemeLayoutObject *layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_ButtonA];
+    /*ThemeLayoutObject *layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_ButtonA];
     int basePos[2]={0};
 
     basePos[0] = layoutobj->posStart[0];
@@ -631,7 +632,7 @@ void drawButtons(menu_s* menu, bool emptyDir, int *out_basePos) {
     }
 
     out_basePos[0] = basePos[0];
-    out_basePos[1] = basePos[1];
+    out_basePos[1] = basePos[1];*/
 }
 
 void menuUpdateNetloader(netloaderState *netloader_state) {
@@ -841,7 +842,7 @@ void menuLoop(void) {
             }
         }
 
-        if(active_entry != NULL) {
+        /*if(active_entry != NULL) {
             const char *buttonstr = "";
 
             if (active_entry->type == ENTRY_TYPE_THEME)
@@ -855,11 +856,11 @@ void menuLoop(void) {
             DrawTextFromLayoutRelative(ThemeLayoutId_ButtonAText, curPos[0], curPos[1], layoutobj->posStart, curPos, themeCurrent.textColor, buttonstr, 'l');
             layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_ButtonA];
             DrawTextFromLayoutRelative(ThemeLayoutId_ButtonA, curPos[0], curPos[1], layoutobj->posStart, curPos, themeCurrent.textColor, themeCurrent.buttonAText, 'l');
-        }
+        }*/
 
         drawButtons(menu, false, curPos);
 
-        if (active_entry && active_entry->type != ENTRY_TYPE_THEME) {
+        /*if (active_entry && active_entry->type != ENTRY_TYPE_THEME) {
             const char *buttonstr = "";
             if (active_entry->starred)
                 buttonstr = textGetString(StrId_Actions_Unstar);
@@ -870,12 +871,12 @@ void menuLoop(void) {
             DrawTextFromLayoutRelative(ThemeLayoutId_ButtonXText, curPos[0], curPos[1], layoutobj->posStart, curPos, themeCurrent.textColor, buttonstr, 'r');
             layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_ButtonX];
             DrawTextFromLayoutRelative(ThemeLayoutId_ButtonX, curPos[0], curPos[1], layoutobj->posStart, curPos, themeCurrent.textColor, themeCurrent.buttonXText, 'l');
-        }
+        }*/
 
     }
 
-    layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_MenuPath];
-    if (layoutobj->visible) DrawTextTruncate(layoutobj->font, layoutobj->posStart[0], layoutobj->posStart[1], themeCurrent.textColor, menu->dirname, layoutobj->size[0], "...");
+    //layoutobj = &themeCurrent.layoutObjects[ThemeLayoutId_MenuPath];
+    //if (layoutobj->visible) DrawTextTruncate(layoutobj->font, layoutobj->posStart[0], layoutobj->posStart[1], themeCurrent.textColor, menu->dirname, layoutobj->size[0], "...");
 
     menuDrawMsgBox();
 }
